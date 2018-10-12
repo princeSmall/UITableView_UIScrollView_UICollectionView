@@ -13,6 +13,11 @@
 		1C832C04216F366400ED712B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C832C03216F366400ED712B /* Assets.xcassets */; };
 		1C832C07216F366400ED712B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C832C05216F366400ED712B /* LaunchScreen.storyboard */; };
 		1C832C0A216F366400ED712B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C832C09216F366400ED712B /* main.m */; };
+		1C832C12216F374700ED712B /* TLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C832C11216F374700ED712B /* TLCell.m */; };
+		1C832C15216F381E00ED712B /* TLImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C832C14216F381E00ED712B /* TLImageCell.m */; };
+		1C832C18216F401000ED712B /* TLCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C832C17216F401000ED712B /* TLCollectionViewCell.m */; };
+		1C832C1B216F74BD00ED712B /* TLBackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C832C1A216F74BD00ED712B /* TLBackCell.m */; };
+		1C832C1D21703A1200ED712B /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C832C1C21703A1200ED712B /* images.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,15 @@
 		1C832C06216F366400ED712B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C832C08216F366400ED712B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C832C09216F366400ED712B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1C832C10216F374700ED712B /* TLCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLCell.h; sourceTree = "<group>"; };
+		1C832C11216F374700ED712B /* TLCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLCell.m; sourceTree = "<group>"; };
+		1C832C13216F381E00ED712B /* TLImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLImageCell.h; sourceTree = "<group>"; };
+		1C832C14216F381E00ED712B /* TLImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLImageCell.m; sourceTree = "<group>"; };
+		1C832C16216F401000ED712B /* TLCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLCollectionViewCell.h; sourceTree = "<group>"; };
+		1C832C17216F401000ED712B /* TLCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLCollectionViewCell.m; sourceTree = "<group>"; };
+		1C832C19216F74BD00ED712B /* TLBackCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLBackCell.h; sourceTree = "<group>"; };
+		1C832C1A216F74BD00ED712B /* TLBackCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLBackCell.m; sourceTree = "<group>"; };
+		1C832C1C21703A1200ED712B /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +72,19 @@
 		1C832BF9216F366300ED712B /* ScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				1C832C1C21703A1200ED712B /* images.png */,
 				1C832BFA216F366300ED712B /* AppDelegate.h */,
 				1C832BFB216F366300ED712B /* AppDelegate.m */,
 				1C832BFD216F366300ED712B /* ViewController.h */,
 				1C832BFE216F366300ED712B /* ViewController.m */,
+				1C832C16216F401000ED712B /* TLCollectionViewCell.h */,
+				1C832C17216F401000ED712B /* TLCollectionViewCell.m */,
+				1C832C13216F381E00ED712B /* TLImageCell.h */,
+				1C832C14216F381E00ED712B /* TLImageCell.m */,
+				1C832C19216F74BD00ED712B /* TLBackCell.h */,
+				1C832C1A216F74BD00ED712B /* TLBackCell.m */,
+				1C832C10216F374700ED712B /* TLCell.h */,
+				1C832C11216F374700ED712B /* TLCell.m */,
 				1C832C00216F366300ED712B /* Main.storyboard */,
 				1C832C03216F366400ED712B /* Assets.xcassets */,
 				1C832C05216F366400ED712B /* LaunchScreen.storyboard */,
@@ -128,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C832C1D21703A1200ED712B /* images.png in Resources */,
 				1C832C07216F366400ED712B /* LaunchScreen.storyboard in Resources */,
 				1C832C04216F366400ED712B /* Assets.xcassets in Resources */,
 				1C832C02216F366300ED712B /* Main.storyboard in Resources */,
@@ -144,6 +168,10 @@
 				1C832BFF216F366300ED712B /* ViewController.m in Sources */,
 				1C832C0A216F366400ED712B /* main.m in Sources */,
 				1C832BFC216F366300ED712B /* AppDelegate.m in Sources */,
+				1C832C12216F374700ED712B /* TLCell.m in Sources */,
+				1C832C18216F401000ED712B /* TLCollectionViewCell.m in Sources */,
+				1C832C1B216F74BD00ED712B /* TLBackCell.m in Sources */,
+				1C832C15216F381E00ED712B /* TLImageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
