@@ -45,7 +45,9 @@
     }
     return _TLTableView;
 }
-
+/*****
+ 最外层TLTableView和嵌套TLBottomTV
+ ****/
 #pragma mark -- UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [tableView isEqual:self.TLTableView] ?  2 : 1;
@@ -59,7 +61,6 @@
     }else{
         return 100;
     }
-    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if ([tableView isEqual:self.TLTableView]) {
@@ -67,7 +68,28 @@
     }else{
         return 0;
     }
-    
+}
+/****
+ 重写headview，返回CollectionView
+ ****/
+- (UICollectionView *)headCV{
+    if (!_headCV) {
+        UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        flowLayout.itemSize = CGSizeMake(self.view.frame.size.width / 5, 120);
+        flowLayout.minimumLineSpacing = 20;
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        _headCV = [[UICollectionView alloc]initWithFrame:self.TLTableView.tableHeaderView.bounds collectionViewLayout:flowLayout];
+        _headCV.showsVerticalScrollIndicator = NO;
+        _headCV.showsHorizontalScrollIndicator = NO;
+        _headCV.backgroundColor = [UIColor whiteColor];
+        [_headCV registerClass:[TLCollectionViewCell class] forCellWithReuseIdentifier:tlCollectionViewCell];
+        _headCV.delegate = self;
+        _headCV.dataSource = self;
+        self.lineView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width / 10 - 15, 119, 30, 5)];
+        self.lineView.backgroundColor = [UIColor blackColor];
+        [_headCV addSubview:self.lineView];
+    }
+    return _headCV;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return self.headCV;
@@ -102,6 +124,9 @@
     }
     return cell;
 }
+/****
+ 在cell里嵌套UIScrollView，用于滚动
+ ***/
 - (UIScrollView *)TLScrollView{
     if (!_TLScrollView) {
         _TLScrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
@@ -119,25 +144,7 @@
     }
     return _TLScrollView;
 }
-- (UICollectionView *)headCV{
-    if (!_headCV) {
-        UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(self.view.frame.size.width / 5, 120);
-        flowLayout.minimumLineSpacing = 20;
-        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _headCV = [[UICollectionView alloc]initWithFrame:self.TLTableView.tableHeaderView.bounds collectionViewLayout:flowLayout];
-        _headCV.showsVerticalScrollIndicator = NO;
-        _headCV.showsHorizontalScrollIndicator = NO;
-        _headCV.backgroundColor = [UIColor whiteColor];
-        [_headCV registerClass:[TLCollectionViewCell class] forCellWithReuseIdentifier:tlCollectionViewCell];
-        _headCV.delegate = self;
-        _headCV.dataSource = self;
-        self.lineView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width / 10 - 15, 119, 30, 5)];
-        self.lineView.backgroundColor = [UIColor blackColor];
-        [_headCV addSubview:self.lineView];
-    }
-    return _headCV;
-}
+
 #pragma mark -- UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return 20;
@@ -157,6 +164,11 @@
     
     return cell;
 }
+/****
+ 1、线条移动动画
+ 2、字体变换动画
+ 3、视图滚动
+ ***/
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     currentSelected = indexPath.row;
     [UIView animateWithDuration:.2f animations:^{
@@ -165,7 +177,6 @@
 
     }];
     [collectionView reloadData];
-    
     [self.TLScrollView setContentOffset:CGPointMake(WINWIDTH *indexPath.row, 0) animated:YES];
 }
 
